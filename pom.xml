@@ -6,7 +6,7 @@
 
   <groupId>com.github.zyndev</groupId>
   <artifactId>centimani</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>centimani</name>
   <url>https://github.com/zyndev/centimani</url>
@@ -16,6 +16,33 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/zyndev/centimani</url>
+    <connection>git@github.com:zyndev/centimani.git</connection>
+    <developerConnection>https://github.com/zyndev/</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>zyndev</name>
+      <email>zyndev@gmail.com</email>
+    </developer>
+  </developers>
 
   <dependencies>
     <dependency>
@@ -31,7 +58,45 @@
       <version>1.18.10</version>
       <scope>provided</scope>
     </dependency>
-
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <show>private</show>
+          <nohelp>true</nohelp>
+          <aggregate>true</aggregate>
+          <charset>UTF-8</charset>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+          <javadocExecutable>/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/bin/javadoc</javadocExecutable>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <additionalparam>-Xdoclint:none</additionalparam>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
